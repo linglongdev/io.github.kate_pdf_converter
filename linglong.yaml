@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.kate_pdf_converter
+  name: kate_pdf_converter
+  version: 0.0.0.1
+  kind: app
+  description: |
+    Kate pdf converter is an open source cross-platform application that can be used for image editing and exporting to pdf.
+
+command:
+  - /opt/apps/io.github.kate_pdf_converter/files/bin/kate_pdf_converter
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/christian-mv/kate_pdf_converter.git
+    version: master
+    commit: ca12e704d22a421e29ffbebbfc566441d2833e90
+
+build: |
+  cd /project/linglong/sources/kate_pdf_converter.git
+  git apply ../../../0001-install.patch
+  cp icons/App_Icon.png icons/kate_pdf_converter.png
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
