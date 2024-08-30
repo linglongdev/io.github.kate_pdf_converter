@@ -1,0 +1,48 @@
+From be5a78bd6472e17b17aa9b2827ce4d436c80bafd Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Tue, 13 Aug 2024 14:30:08 +0800
+Subject: [PATCH] install
+
+---
+ kate_pdf_converter.desktop | 11 +++++++++++
+ pdf_converter.pro          |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 kate_pdf_converter.desktop
+
+diff --git a/kate_pdf_converter.desktop b/kate_pdf_converter.desktop
+new file mode 100644
+index 0000000..97ad92d
+--- /dev/null
++++ b/kate_pdf_converter.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=kate_pdf_converter
++Name=kate_pdf_converter
++Name[zh_CN]=kate_pdf_converter
++Icon=kate_pdf_converter
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=kate_pdf_converter
++Version=1.0
+\ No newline at end of file
+diff --git a/pdf_converter.pro b/pdf_converter.pro
+index b80f5aa..ea4f74a 100644
+--- a/pdf_converter.pro
++++ b/pdf_converter.pro
+@@ -38,3 +38,11 @@ FORMS    += mainwindow.ui \
+ 
+ RESOURCES += \
+     myresources.qrc
++
++target.path = $$PREFIX/bin
++desktop.files = kate_pdf_converter.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = icons/kate_pdf_converter.png
++
++INSTALLS += target desktop icons
+-- 
+2.43.4
+
